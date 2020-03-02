@@ -1,0 +1,22 @@
+.idea
+*.pyc
+*.prof
+__pycache__
+.mypy_cache
+.coverage
+db_diagram.png
+metrics_diagram.png
+src/backend/media/
+src/backend/test.py
+src/backend/onebeat/static
+secrets
+*.pickle
+*.DS_Store
+docker-compose.override.yml
+docker-compose.override.yaml
+.env
+*venv*
+
+
+# config files
+*config*
