@@ -21,6 +21,14 @@ But users are free to use it as they seem fit.
 The application will read a config file (yaml, json etc) and then return the stats at the moment. 
 To get a stream of monthly data, the user should run this on a daily basis, probably as a cron job.
 
+
+### Usage
+
+```bash
+$ python app.py anubhavcodes
+3
+```
+
 ### Todo
 
 - [ ] Write documentation on how to setup the project. 
