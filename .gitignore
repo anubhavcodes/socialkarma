@@ -19,4 +19,4 @@ docker-compose.override.yaml
 
 
 # config files
-*config*
+config*
