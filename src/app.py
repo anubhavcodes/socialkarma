@@ -4,6 +4,7 @@ from selenium.webdriver import Firefox
 
 import requests
 from bs4 import BeautifulSoup
+from selenium.webdriver.firefox.options import Options
 
 from utils import get_environment_variable
 
@@ -36,7 +37,9 @@ def get_keybase_followers(keybase_handle: str) -> str:
 
 
 def get_linkedin_views(username: str, password: str, profile_handle: str) -> Tuple[str, str, str]:
-    browser = Firefox()
+    opts = Options()
+    opts.headless = True
+    browser = Firefox(options=opts)
     browser.get("https://linkedin.com/login")
     browser.find_element_by_name("session_key").send_keys(username)
     browser.find_element_by_name("session_password").send_keys(password)
