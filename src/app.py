@@ -90,7 +90,7 @@ def run():
             }
         )
         github_followers = get_github_stats(github_api_key)
-        result.append({"type": "github", "github_followers": github_followers})
+        result.append({"type": "github", "timestamp": timestamp, "github_followers": github_followers})
         stackoverflow_reputation, stackoverflow_profile_views = get_stackoverflow_followers(stackoverflow_handle)
         result.append(
             {
