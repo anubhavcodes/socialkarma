@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from typing import Tuple
 from selenium.webdriver import Firefox
@@ -7,7 +8,9 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.firefox.options import Options
 
 from utils import get_environment_variable
+from dotenv import load_dotenv
 
+load_dotenv()
 HEADERS = {"User-Agent": "github.com/anubhavcodes/socialkarma"}
 
 
@@ -77,6 +80,17 @@ def run():
         result.append({"type": "twitter", "timestamp": timestamp, "twitter_followers": twitter_followers})
         keybase_followers = get_keybase_followers(keybase_handle)
         result.append({"type": "keybase", "timestamp": timestamp, "keybase_followers": keybase_followers})
+        github_followers = get_github_stats(github_api_key)
+        result.append({"type": "github", "timestamp": timestamp, "github_followers": github_followers})
+        stackoverflow_reputation, stackoverflow_profile_views = get_stackoverflow_followers(stackoverflow_handle)
+        result.append(
+            {
+                "type": "stackoverflow",
+                "timestamp": timestamp,
+                "stackoverflow_reputation": stackoverflow_reputation,
+                "stackoverflow_profile_views": stackoverflow_profile_views,
+            }
+        )
         linkedin_profile_views, linkedin_post_views, linkedin_search_appearances = get_linkedin_views(
             linkedin_username, linkedin_password, linkedin_profile_handle
         )
@@ -89,20 +103,9 @@ def run():
                 "linkedin_search_appearances": linkedin_search_appearances,
             }
         )
-        github_followers = get_github_stats(github_api_key)
-        result.append({"type": "github", "timestamp": timestamp, "github_followers": github_followers})
-        stackoverflow_reputation, stackoverflow_profile_views = get_stackoverflow_followers(stackoverflow_handle)
-        result.append(
-            {
-                "type": "stackoverflow",
-                "timestamp": timestamp,
-                "stackoverflow_reputation": stackoverflow_reputation,
-                "stackoverflow_profile_views": stackoverflow_profile_views,
-            }
-        )
     except Exception as e:
         result.append({"timestamp": timestamp, "error": str(e)})
-    print(result)
+    print(json.dumps(result))
 
 
 if __name__ == "__main__":
