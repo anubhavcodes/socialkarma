@@ -24,11 +24,29 @@ To get a stream of monthly data, the user should run this on a daily basis, prob
 
 ### Usage
 
+Make sure the follwoing environment variables are set:
+
 ```bash
-$ python app.py anubhavcodes
-3
+TWITTER_HANDLE=anubhavcodes
+KEYBASE_HANDLE=anubhavyadav
+LINKEDIN_USERNAME="yourlinkedinemail"
+LINKEDIN_PASSWORD="yourlinkedinpassword"
+LINKEDIN_PROFILE_HANDLE=/in/anubhavcodes
+GITHUB_API_KEY="yourgithubapikey"
+STACKOVERFLOW_HANDLE=12928701
 ```
 
+```bash
+$ python app.py 
+```
+
+### Usage with docker
+
+Make sure the above environment variables are present in a file `.env` present at the root of the repo.
+
+```bash
+docker-compose build && docker-compose up
+```
 
 ### Direnv support
 You can install [direnv](https://direnv.net) and then run `direnv allow` to have access to
@@ -43,7 +61,7 @@ Make sure you have [precommit](https://pre-commit.com) installed on your environ
 ### Todo
 
 - [✅] Write documentation on how to setup the project.
-- [ ] Dockerize the application.
+- [✅] Dockerize the application.
 - [✅] Add precommit hooks.
 - [ ] Switch to a better package manager.
 - [ ] More???

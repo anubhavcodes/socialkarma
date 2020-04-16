@@ -2,11 +2,6 @@ version: '2'
 services:
   app:
     build: .
-    environment:
-      TWITTER_HANDLE:
-      KEYBASE_HANDLE:
-      LINKEDIN_USERNAME:
-      LINKEDIN_PASSWORD:
-      LINKEDIN_PROFILE_HANDLE:
-      GITHUB_API_KEY:
-      STACKOVERFLOW_HANDLE:
+    env_file:
+      - .env
+
