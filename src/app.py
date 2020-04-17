@@ -56,14 +56,10 @@ def get_linkedin_views(username: str, password: str, profile_handle: str) -> Tup
     return profile_views, post_views, search_appearances
 
 
-def get_github_stats(github_api_key: str) -> str:
-    headers = {
-        "Accept": "application/vnd.github.v3+json",
-        "User-Agent": "anubhavcodes/socialkarma",
-        "Authorization": f"token {github_api_key}",
-    }
-    r = requests.get("https://api.github.com/user", headers=headers)
-    return r.json()["following"]
+def get_github_stats(github_username: str) -> str:
+    r = requests.get(f"https://github.com/{github_username}", headers=HEADERS)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    return soup.findAll('span', {'class': 'Counter'})[-2].text.strip('\n').strip()
 
 
 def run():
@@ -72,7 +68,7 @@ def run():
     linkedin_username = get_environment_variable("LINKEDIN_USERNAME")
     linkedin_password = get_environment_variable("LINKEDIN_PASSWORD")
     linkedin_profile_handle = get_environment_variable("LINKEDIN_PROFILE_HANDLE")
-    github_api_key = get_environment_variable("GITHUB_API_KEY")
+    github_username = get_environment_variable("GITHUB_USERNAME")
     stackoverflow_handle = get_environment_variable("STACKOVERFLOW_HANDLE")
 
     result = []
@@ -82,7 +78,7 @@ def run():
         result.append({"type": "twitter", "timestamp": timestamp, "twitter_followers": twitter_followers})
         keybase_followers = get_keybase_followers(keybase_handle)
         result.append({"type": "keybase", "timestamp": timestamp, "keybase_followers": keybase_followers})
-        github_followers = get_github_stats(github_api_key)
+        github_followers = get_github_stats(github_username)
         result.append({"type": "github", "timestamp": timestamp, "github_followers": github_followers})
         stackoverflow_reputation, stackoverflow_profile_views = get_stackoverflow_followers(stackoverflow_handle)
         result.append(

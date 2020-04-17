@@ -32,7 +32,7 @@ KEYBASE_HANDLE=anubhavyadav
 LINKEDIN_USERNAME="yourlinkedinemail"
 LINKEDIN_PASSWORD="yourlinkedinpassword"
 LINKEDIN_PROFILE_HANDLE=/in/anubhavcodes
-GITHUB_API_KEY="yourgithubapikey"
+GITHUB_USERNAME=anubhavcodes
 STACKOVERFLOW_HANDLE=12928701
 ```
 
