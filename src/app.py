@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from time import sleep
 from typing import Tuple
 from selenium.webdriver import Firefox
 
@@ -48,6 +49,7 @@ def get_linkedin_views(username: str, password: str, profile_handle: str) -> Tup
     browser.find_element_by_name("session_password").send_keys(password)
     browser.find_element_by_tag_name("button").click()
     browser.get(f"https://www.linkedin.com/{profile_handle}")
+    sleep(2)
     post_views = browser.find_element_by_class_name("update-views").text.split("\n")[0]
     profile_views = browser.find_element_by_class_name("profile-views").text.split("\n")[0]
     search_appearances = browser.find_element_by_class_name("search-appearances").text.split("\n")[0]
