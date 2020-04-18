@@ -56,10 +56,12 @@ def get_linkedin_views(username: str, password: str, profile_handle: str) -> Tup
     return profile_views, post_views, search_appearances
 
 
-def get_github_stats(github_username: str) -> str:
+def get_github_stats(github_username: str) -> Tuple[str, str]:
     r = requests.get(f"https://github.com/{github_username}", headers=HEADERS)
     soup = BeautifulSoup(r.text, 'html.parser')
-    return soup.findAll('span', {'class': 'Counter'})[-2].text.strip('\n').strip()
+    followers = soup.findAll('span', {'class': 'Counter'})[-2].text.strip('\n').strip()
+    following = soup.findAll('span', {'class': 'Counter'})[-1].text.strip('\n').strip()
+    return followers, following
 
 
 def run():
@@ -78,8 +80,8 @@ def run():
         result.append({"type": "twitter", "timestamp": timestamp, "twitter_followers": twitter_followers})
         keybase_followers = get_keybase_followers(keybase_handle)
         result.append({"type": "keybase", "timestamp": timestamp, "keybase_followers": keybase_followers})
-        github_followers = get_github_stats(github_username)
-        result.append({"type": "github", "timestamp": timestamp, "github_followers": github_followers})
+        github_followers, github_following = get_github_stats(github_username)
+        result.append({"type": "github", "timestamp": timestamp, "github_followers": github_followers, "github_following": github_following})
         stackoverflow_reputation, stackoverflow_profile_views = get_stackoverflow_followers(stackoverflow_handle)
         result.append(
             {
