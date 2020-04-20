@@ -37,7 +37,7 @@ STACKOVERFLOW_HANDLE=12928701
 ```
 
 ```bash
-$ python app.py 
+$ python app.py
 ```
 
 ### Usage with docker
@@ -45,7 +45,13 @@ $ python app.py
 Make sure the above environment variables are present in a file `.env` present at the root of the repo.
 
 ```bash
-docker-compose build && docker-compose up
+./scripts/run-int
+```
+
+Or if you have `direnv` installed you can just do
+
+```bash
+run-init
 ```
 
 ### Direnv support
