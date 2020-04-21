@@ -77,6 +77,12 @@ def run():
     linkedin_profile_handle = get_environment_variable("LINKEDIN_PROFILE_HANDLE")
     github_username = get_environment_variable("GITHUB_USERNAME")
     stackoverflow_handle = get_environment_variable("STACKOVERFLOW_HANDLE")
+    sentry_dns = get_environment_variable("SENTRY_DSN")
+
+    if sentry_dns:
+        import sentry_sdk
+
+        sentry_sdk.init(sentry_dns)
 
     result = []
     timestamp = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%fZ")
@@ -118,7 +124,7 @@ def run():
                 "linkedin_connections": linkedin_connections,
             }
         )
-    except Exception as e:
+    except KeyError as e:
         result.append({"timestamp": timestamp, "error": str(e)})
     print(json.dumps(result))
 
