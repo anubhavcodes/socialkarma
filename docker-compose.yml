@@ -5,3 +5,7 @@ services:
     env_file:
       - .env
 
+  db:
+    image: mongo:latest
+    ports:
+    - 27017:27017
