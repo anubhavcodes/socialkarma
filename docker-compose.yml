@@ -15,14 +15,14 @@ services:
       "-m",
       "cli",
       "--id",
-      "${GITHUB_USERNAME}",
+      "${TWITTER_HANDLE}",
       "--host",
       "${MONGO_HOST}",
       "--port",
       "${MONGO_PORT}",
       "--db",
       "${MONGO_DB}",
-      "github"
+      "twitter"
     ]
     depends_on:
       - db

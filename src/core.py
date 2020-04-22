@@ -42,7 +42,8 @@ class TwitterSource(SourceWithID):
         r = requests.get(url, headers=self.HEADERS)
         soup = BeautifulSoup(r.text, "html.parser")
         followers: str = soup.find("a", {"href": f"/{self.id}/followers"}).text.strip(" Followers \n")
-        return {"timestamp": self.timestamp, "followers": followers}
+        following: str = soup.find("a", {"href": f"/{self.id}/following"}).text.strip(" Following \n")
+        return {"timestamp": self.timestamp, "followers": followers, "following": following}
 
 
 class StackOverflowSource(SourceWithID):
@@ -61,7 +62,8 @@ class KeybaseSource(SourceWithID):
         r = requests.get(url)
         soup = BeautifulSoup(r.text, "html.parser")
         followers: str = soup.findAll("h4")[1].text.strip("Followers ").strip("(").strip(")")
-        return {"timestamp": self.timestamp, "followers": followers}
+        following: str = soup.findAll("h4")[0].text.strip("Following ").strip("(").strip(")")
+        return {"timestamp": self.timestamp, "followers": followers, "following": following}
 
 
 class LinkedInSource(SourceWithCredentials):
