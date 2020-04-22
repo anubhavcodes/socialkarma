@@ -1,11 +1,28 @@
 version: '2'
 services:
+  db:
+    image: mongo:latest
+    container_name: mongo_local
+    ports:
+    - 27017:27017
+
   app:
     build: .
     env_file:
       - .env
-
-  db:
-    image: mongo:latest
-    ports:
-    - 27017:27017
+    command: [
+      "python",
+      "-m",
+      "cli",
+      "--id",
+      "${GITHUB_USERNAME}",
+      "--host",
+      "${MONGO_HOST}",
+      "--port",
+      "${MONGO_PORT}",
+      "--db",
+      "${MONGO_DB}",
+      "github"
+    ]
+    depends_on:
+      - db

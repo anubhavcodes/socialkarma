@@ -3,3 +3,6 @@ bs4
 selenium
 python-dotenv
 sentry-sdk==0.15.1
+attrs
+pymongo
+click
