@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# go back to the root directory
+cd "${0%/*}/.."
+
+docker container run --rm -v ${PWD}/src:/srv anubhavcodes/pip-compile pip-compile requirements.in
