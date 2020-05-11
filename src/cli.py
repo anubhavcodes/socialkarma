@@ -10,10 +10,11 @@ from service import process_source, SOURCES
 @click.option("--host", required=True, default="localhost", help="host of mongo instance")
 @click.option("--port", required=True, default=27017, help="port number of the mongo instance")
 @click.option("--db", required=True, default="stats", help="db to use for mongo instance")
+@click.option("--quite/--no-quite", default=False)
 @click.argument("source", type=click.Choice(SOURCES.keys()))
-def run(id, username, password, host, port, db, source):
+def run(id, username, password, host, port, db, quite, source):
     print(f"Mongo called with {host}:{port}")
-    process_source(source, id, host, port, db, username, password)
+    process_source(source, id, host, port, db, username, password, quite)
 
 
 if __name__ == "__main__":

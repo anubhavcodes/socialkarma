@@ -1,3 +1,4 @@
+from pprint import pprint
 from typing import Dict
 
 from pymongo import MongoClient
@@ -29,7 +30,12 @@ def get_stats(source: str, id: str, username: str = None, password: str = None) 
     return s.get_stats()
 
 
-def process_source(source: str, id: str, host: str, port: int, db: str, username: str = None, password: str = None):
+def process_source(
+    source: str, id: str, host: str, port: int, db: str, username: str = None, password: str = None, quite=False
+):
     print(f"Processing {source}")
     stats = get_stats(source, id, username, password)
-    write_to_db(host=host, port=port, db=db, collection=source, document=stats)
+    if not quite:
+        write_to_db(host=host, port=port, db=db, collection=source, document=stats)
+    else:
+        pprint(stats)
