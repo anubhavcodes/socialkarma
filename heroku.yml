@@ -1,5 +1,3 @@
 build:
   docker:
     app: src/Dockerfile
-run:
-  test: "python -m cli --id ${TWITTER_HANDLE} --quite twitter"
