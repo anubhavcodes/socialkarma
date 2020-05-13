@@ -1,0 +1,19 @@
+build:
+  docker:
+    app: src/Dockerfile
+  run:
+    test: [
+      "python",
+      "-m",
+      "cli",
+      "--id",
+      "${TWITTER_HANDLE}",
+      "--host",
+      "${MONGO_HOST}",
+      "--port",
+      "${MONGO_PORT}",
+      "--db",
+      "${MONGO_DB}",
+      "--quite",
+      "twitter"
+    ]
