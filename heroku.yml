@@ -4,5 +4,5 @@ build:
 run:
   twitter:
     command:
-      - python -m cli --id ${TWITTER_ID} --quite twitter
+      - python -m cli --id anubhavcodes --quite twitter
     image: app
