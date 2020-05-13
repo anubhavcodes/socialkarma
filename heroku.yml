@@ -3,5 +3,6 @@ build:
     app: src/Dockerfile
 run:
   twitter:
-    command: python -m cli --id ${TWITTER_ID} --quite twitter
+    command:
+      - python -m cli --id ${TWITTER_ID} --quite twitter
     image: app
