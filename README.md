@@ -71,6 +71,7 @@ Make sure you have [precommit](https://pre-commit.com) installed on your environ
 - [✅] Add precommit hooks.
 - [ ] Switch to a better package manager.
 - [ ] More???
+- [ ] Deploy on heroku or something similar for one off dynos.
 
 
 It's a heavy WIP and I will think more about the features and decide on an MVP release
