@@ -16,10 +16,8 @@ services:
       "cli",
       "--id",
       "${TWITTER_HANDLE}",
-      "--host",
-      "${MONGO_HOST}",
-      "--port",
-      "${MONGO_PORT}",
+      "--mongo-url",
+      "${MONGO_URL}",
       "--db",
       "${MONGO_DB}",
       "twitter"
