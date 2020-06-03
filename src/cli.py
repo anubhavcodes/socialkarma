@@ -1,6 +1,7 @@
 import click
 
 from service import process_source, SOURCES
+from utils import configure_sentry
 
 
 @click.command()
@@ -16,4 +17,5 @@ def run(id, username, password, mongo_url, db, quite, source):
 
 
 if __name__ == "__main__":
+    configure_sentry()
     run()

@@ -23,7 +23,7 @@ def write_to_db(mongo_url: str, db: str, collection: str, document: Dict):
 
 def get_stats(source: str, id: str, username: str = None, password: str = None) -> Dict:
     if source == "linkedin":  # @TODO think of a better solution
-        s: LinkedInSource = SOURCES["source"](id=id, username=username, password=password)  # noqa
+        s: LinkedInSource = SOURCES[source](id=id, username=username, password=password)  # noqa
     else:
         s: SourceWithID = SOURCES[source](id=id)  # noqa
     return s.get_stats()
