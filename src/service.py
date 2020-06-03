@@ -14,9 +14,8 @@ SOURCES = {
 }
 
 
-def write_to_db(host: str, port: int, db: str, collection: str, document: Dict):
-    print(f"Writing to mongo on {host}:{port}\n{document}")
-    client = MongoClient(host=host, port=port)
+def write_to_db(mongo_url: str, db: str, collection: str, document: Dict):
+    client = MongoClient(mongo_url)
     db = client[db]
     collection = db[collection]
     collection.insert_one(document=document)
@@ -31,11 +30,10 @@ def get_stats(source: str, id: str, username: str = None, password: str = None) 
 
 
 def process_source(
-    source: str, id: str, host: str, port: int, db: str, username: str = None, password: str = None, quite=False
+    source: str, id: str, mongo_url: str, db: str, username: str = None, password: str = None, quite=False
 ):
-    print(f"Processing {source}")
     stats = get_stats(source, id, username, password)
     if not quite:
-        write_to_db(host=host, port=port, db=db, collection=source, document=stats)
+        write_to_db(mongo_url=mongo_url, db=db, collection=source, document=stats)
     else:
         pprint(stats)

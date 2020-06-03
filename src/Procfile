@@ -1,1 +1,1 @@
-twitter: python3 -m cli --id $TWITTER_HANDLE --host ${MONGO_HOST} --port ${MONGO_PORT} --db ${MONGO_DB} twitter
+twitter: python3 -m cli --id $TWITTER_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB twitter
