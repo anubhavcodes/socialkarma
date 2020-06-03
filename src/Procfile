@@ -1,5 +1,5 @@
 twitter: python3 -m cli --id $TWITTER_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB twitter
 keybase: python3 -m cli --id $KEYBASE_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB keybase
-linkedin: python3 -m cli --id $LINKEDIN_PROFILE_HANDLE --username $LINKEDIN_USERNAME --password $LINKEDIN_PASSWORD --mongo-url $MONGO_URL --db $MONGO_DB linkedin
+linkedin: ./scripts/run-install-geckodriver && python3 -m cli --id $LINKEDIN_PROFILE_HANDLE --username $LINKEDIN_USERNAME --password $LINKEDIN_PASSWORD --mongo-url $MONGO_URL --db $MONGO_DB linkedin
 github: python3 -m cli --id $GITHUB_USERNAME --mongo-url $MONGO_URL --db $MONGO_DB github
 stackoverflow: python3 -m cli --id $STACKOVERFLOW_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB stackoverflow
