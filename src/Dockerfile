@@ -13,4 +13,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+ENV TWITTER_HANDLE=$TWITTER_HANDLE
+ENV MONGO_URL=$MONGO_URL
+ENV MONGO_DB=$MONGO_DB
+
 COPY . .
