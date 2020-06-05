@@ -72,7 +72,7 @@ class LinkedInSource(SourceWithCredentials):
         from selenium.webdriver import Firefox
 
         opts = Options()
-        opts.headless = False
+        opts.headless = True
         browser = Firefox(options=opts)
         browser.get("https://linkedin.com/login")
         browser.find_element_by_name("session_key").send_keys(self.username)
