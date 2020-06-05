@@ -1,0 +1,8 @@
+build:
+  docker:
+    app: Dockerfile
+run:
+  twitter: python3 -m cli --id $TWITTER_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB twitter
+  keybase: python3 -m cli --id $KEYBASE_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB keybase
+  github: python3 -m cli --id $GITHUB_USERNAME --mongo-url $MONGO_URL --db $MONGO_DB github
+  stackoverflow: python3 -m cli --id $STACKOVERFLOW_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB stackoverflow
