@@ -18,3 +18,6 @@ run:
     command:
       - python3 -m cli --id $STACKOVERFLOW_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB stackoverflow
     image: app
+  linkedin:
+    command:
+      - python3 -m cli --id $LINKEDIN_PROFILE_HANDLE --username $LINKEDIN_USERNAME --password $LINKEDIN_PASSWORD --mongo-url $MONGO_URL --db $MONGO_DB linkedin
