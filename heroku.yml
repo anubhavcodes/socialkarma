@@ -3,14 +3,18 @@ build:
     app: src/Dockerfile
 run:
   twitter:
-    command: python3 -m cli --id $TWITTER_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB twitter
+    command:
+      - python3 -m cli --id $TWITTER_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB twitter
     image: app
   keybase:
-    command: python3 -m cli --id $KEYBASE_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB keybase
+    command:
+      - python3 -m cli --id $KEYBASE_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB keybase
     image: app
   github:
-    command: python3 -m cli --id $GITHUB_USERNAME --mongo-url $MONGO_URL --db $MONGO_DB github
+    command:
+      - python3 -m cli --id $GITHUB_USERNAME --mongo-url $MONGO_URL --db $MONGO_DB github
     image: app
   stackoverflow:
-    command: python3 -m cli --id $STACKOVERFLOW_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB stackoverflow
+    command:
+      - python3 -m cli --id $STACKOVERFLOW_HANDLE --mongo-url $MONGO_URL --db $MONGO_DB stackoverflow
     image: app
