@@ -6,4 +6,4 @@ cd "${0%/*}/.."
 echo "Installing hooks..."
 pre-commit install
 
-docker build -t socialkarma:0.1 .
+docker build -t socialkarma:0.1 -f src/Dockerfile src
